@@ -16,10 +16,12 @@ public class Program {
 
         SellerDao sellerDao = DaoFactory.createSellerDao();
 
+        System.out.println();
         System.out.println("=== TEST 1: Find by ID === ");
         Seller seller = sellerDao.findById(3);
         System.out.println(seller);
-
+        
+        System.out.println();
         System.out.println("=== TEST 2: Find by Department === ");
         Department department = new Department(2, null);
         List<Seller> list = sellerDao.findByDepartment(department);
@@ -28,6 +30,7 @@ public class Program {
             System.out.println(s);
         }
 
+        System.out.println();
         System.out.println("=== TEST 3: Find by All === ");
         List<Seller> list2 = sellerDao.findAll();
 
@@ -35,9 +38,19 @@ public class Program {
             System.out.println(s);
         }
 
+        System.out.println();
         System.out.println("=== TEST 4: Seller Insert === ");
         Seller newSeller = new Seller(null, "Greg", "greg@mail.com", new Date(), 4000.00, department);
         sellerDao.insert(newSeller);
         System.out.println("Inserted! New id = " + newSeller.getId());
+
+        System.out.println();
+        System.out.println("=== TEST 5: Seller Update === ");
+        seller = sellerDao.findById(1);
+        seller.setName("Martha Waine");
+        seller.setEmail("martha@mail.com");
+        sellerDao.update(seller);
+        System.out.println("Update Complete!");
+
     }
 }
