@@ -29,14 +29,24 @@ public class Program2 {
         System.out.println("DEPARTAMENTO DE ID: " + dep2.getId() + " INSERIDO.");
         
         System.out.println("=== TEST4: UPDATE ===");
+
         departmentList.sort(null);
+
         Department dep3 = departmentDao.findById(30);
         dep3.setName("Cars");
         departmentDao.update(dep3);
         departmentList = departmentDao.findAll();
         departmentList.sort(null);
+
         for(Department d : departmentList){
             System.out.println(d);
         }
+
+        System.out.println();
+        System.out.println("=== TEST5: DELETE ===");
+        departmentDao.deleteById(31);
+        System.out.println("That Id has been deleted!");
+
+
     }
 }
