@@ -27,5 +27,16 @@ public class Program2 {
         Department dep2 = new Department(null,"Tools");
         departmentDao.insert(dep2);
         System.out.println("DEPARTAMENTO DE ID: " + dep2.getId() + " INSERIDO.");
+        
+        System.out.println("=== TEST4: UPDATE ===");
+        departmentList.sort(null);
+        Department dep3 = departmentDao.findById(30);
+        dep3.setName("Cars");
+        departmentDao.update(dep3);
+        departmentList = departmentDao.findAll();
+        departmentList.sort(null);
+        for(Department d : departmentList){
+            System.out.println(d);
+        }
     }
 }

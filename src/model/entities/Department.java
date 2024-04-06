@@ -2,7 +2,7 @@ package model.entities;
 
 import java.io.Serializable;
 
-public class Department implements Serializable {
+public class Department implements Serializable, Comparable<Department> {
 
     private static final long serialVersionUID = 1L;
 
@@ -63,5 +63,12 @@ public class Department implements Serializable {
     public String toString() {
         return "ID: " + id + ", DepartmentName: " + name;
     }
+
+    @Override
+    public int compareTo(Department o) {
+        return id.compareTo(o.getId());
+    }
+
+
 
 }
