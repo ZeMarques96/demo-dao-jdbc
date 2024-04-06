@@ -89,7 +89,7 @@ public class DepartmentDaoJDBC implements DepartmentDao {
             st.setInt(1, id);
             int rowsAffected = st.executeUpdate();
             if (rowsAffected == 0) {
-                System.out.println("Id couldn't be deleted, because it doesn't exist.");
+                throw new DbException("Id couldn't be deleted, because it doesn't exist.");
             }
         }
         catch (SQLException e ){
@@ -101,14 +101,13 @@ public class DepartmentDaoJDBC implements DepartmentDao {
     public Department findById(Integer id) {
         PreparedStatement st = null;
         ResultSet rs = null;
-        try {
 
+        try {
             st = conn.prepareStatement(
                     "SELECT * FROM Department "
                             + "WHERE Id = ?");
             st.setInt(1, id);
             rs = st.executeQuery();
-
             if (rs.next()) {
                 Department dep = new Department();
                 dep = instantiateDepartment(rs);
