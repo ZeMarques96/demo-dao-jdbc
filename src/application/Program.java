@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
+import db.DB;
 import model.dao.DaoFactory;
 import model.dao.SellerDao;
 import model.entities.Department;
@@ -60,6 +61,9 @@ public class Program {
         int delId = sc.nextInt();
         sellerDao.deleteById(delId);
         System.out.println("Delete Complete!");
+
+
+        DB.closeConnection();
 
 
         sc.close();
